@@ -1,2 +1,2 @@
-print("hello")
-print(5+3)
+print("67")
+print(67)
