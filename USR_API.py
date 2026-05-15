@@ -6,7 +6,6 @@ from flask_restful import Api, Resource, reqparse
 app = Flask(__name__)
 api = Api(app)
 
-# Create an 'uploads' folder to safely store incoming images
 os.makedirs("uploads", exist_ok=True)
 note_args = reqparse.RequestParser('Authorization', location='Json')
 note_args.add_argument('student_id', type=int, required=True, help="Missing student ID")
