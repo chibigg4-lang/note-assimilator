@@ -12,7 +12,7 @@ app = Flask(__name__)
 api = Api(app)
 
 os.makedirs("uploads", exist_ok=True)
-note_args = reqparse.RequestParser( location=['Json'] )
+note_args = reqparse.RequestParser('Authorization', location='Json')
 note_args.add_argument('student_id', type=int, required=True, help="Missing student ID")
 note_args.add_argument('image_base64', type=str, required=True, help="Missing image data")
 
@@ -60,4 +60,3 @@ api.add_resource(MathNoteExtractor, '/api/extract-note')
 
 if __name__ == '__main__':
     app.run(port=5050, debug=True)
-
