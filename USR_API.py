@@ -3,6 +3,7 @@ import base64
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from pdf2image import convert_from_path, convert_from_bytes
+from vlm_extractor import extract_markdown_from_image
 from pdf2image.exceptions import (
     PDFInfoNotInstalledError,
     PDFPageCountError,
@@ -12,7 +13,7 @@ app = Flask(__name__)
 api = Api(app)
 
 os.makedirs("uploads", exist_ok=True)
-note_args = reqparse.RequestParser('Authorization', location='Json')
+note_args = reqparse.RequestParser()
 note_args.add_argument('student_id', type=int, required=True, help="Missing student ID")
 note_args.add_argument('image_base64', type=str, required=True, help="Missing image data")
 
